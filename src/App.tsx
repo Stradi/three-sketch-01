@@ -1,5 +1,14 @@
+import { Canvas } from "@react-three/fiber";
+
 const App = () => {
-  return <div>Hello World!</div>;
+  return (
+    <Canvas>
+      <mesh>
+        <sphereGeometry args={[1, 4, 4]} />
+        <meshBasicMaterial color="blue" />
+      </mesh>
+    </Canvas>
+  );
 };
 
 export { App };
