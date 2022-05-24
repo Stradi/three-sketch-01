@@ -17,11 +17,19 @@ const BlobSphere = ({ envMap, ref }: BlobSphereProps) => {
     rY,
     rZ,
     color,
+    opacity,
+    transparent,
     roughness,
     metalness,
     reflectivity,
     clearcoat,
     clearcoatRoughness,
+    ior,
+    sheen,
+    sheenColor,
+    sheenRoughness,
+    thickness,
+    transmission,
   } = useControls("Blob", {
     Object: folder(
       {
@@ -95,6 +103,15 @@ const BlobSphere = ({ envMap, ref }: BlobSphereProps) => {
     Material: folder(
       {
         color: "#000000",
+        opacity: {
+          value: 0,
+          min: 0,
+          max: 1,
+          step: 0.01,
+        },
+        transparent: {
+          value: false,
+        },
         roughness: {
           value: 0.25,
           min: 0,
@@ -125,6 +142,37 @@ const BlobSphere = ({ envMap, ref }: BlobSphereProps) => {
           max: 1,
           step: 0.01,
         },
+        ior: {
+          value: 1.5,
+          min: 1,
+          max: 2.333,
+          step: 0.01,
+        },
+        sheen: {
+          value: 0,
+          min: 0,
+          max: 1,
+          step: 0.01,
+        },
+        sheenRoughness: {
+          value: 0,
+          min: 0,
+          max: 1,
+          step: 0.01,
+        },
+        sheenColor: "#ffffff",
+        thickness: {
+          value: 0,
+          min: 0,
+          max: 10,
+          step: 0.01,
+        },
+        transmission: {
+          value: 0,
+          min: 0,
+          max: 1,
+          step: 0.01,
+        },
       },
       { collapsed: true }
     ),
@@ -142,11 +190,18 @@ const BlobSphere = ({ envMap, ref }: BlobSphereProps) => {
         args={[
           {
             color,
+            opacity,
+            transparent,
             roughness,
             metalness,
             reflectivity,
             clearcoat,
             clearcoatRoughness,
+            ior,
+            sheen,
+            sheenColor,
+            thickness,
+            transmission,
           },
         ]}
         envMap={envMap}
