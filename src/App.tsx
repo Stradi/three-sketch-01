@@ -23,13 +23,7 @@ const App = () => {
       </Backdrop>
 
       <CubeCamera resolution={256} frames={Infinity}>
-        {(texture) => (
-          <BlobSphere
-            ref={blobSphereRef}
-            position={[0, 3, 0]}
-            envMap={texture}
-          />
-        )}
+        {(texture) => <BlobSphere ref={blobSphereRef} envMap={texture} />}
       </CubeCamera>
     </Canvas>
   );
